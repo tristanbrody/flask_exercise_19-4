@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Thank you!{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<h1 class="text-center">{{messages[0]}}</h1>
+{% endif %}
+{% endwith %}
+<h1 class="text-center">Wow, thanks for completing the {{session['current_survey']}} survey</h1>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Your Answers</h5>
+        {% for response in responses %}
+        {% for key, value in response.items() %}
+        <p><strong>Question: {{key}}</strong></p>
+        <p><strong>Answer: {{value}}</strong></p>
+        <hr>
+        {% endfor %}
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<div class="d-flex justify-content-center">
+    <form action="/">
+        <button type="submit" class="btn btn-primary">
+            Return Home
+        </button>
+    </form>
+</div>
+{% endblock %}
