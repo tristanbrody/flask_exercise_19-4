@@ -84,13 +84,3 @@ def survey_completed(survey, already_completed=False):
     if already_completed:
         flash("You've already completed this survey")
     return redirect('/thanks-dude')
-# is it possible to store an instance of a object in (Flask) session?
-# I tried session[f"{survey_name}_responses"] = SurveyResponse(survey_name) and got 'Object of type SurveyResponse is not JSON serializable'
-
-# how can I make the variable names in the view functions and Jinja templates less unwieldy? In every view function I'm either redeclaring local variables or using the session + key combinations, which results in long lines like 
-# 
-# session["current_survey_length"] = surveys[session["current_survey"]].survey_length
-#
-# which are harder to read/annoying to write. 
-
-# in general, I feel like my code takes too many lines and is overly complicated. How can I refactor some of this?
